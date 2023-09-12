@@ -2,7 +2,9 @@
 
 namespace App\Dto\Financial;
 
-class ExpenseDTO
+use JsonSerializable;
+
+class ExpenseDTO implements JsonSerializable
 {
     private int $id;
     private string $description;
@@ -69,15 +71,15 @@ class ExpenseDTO
         $this->fk_user_id = $userId;
     }
 
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
-        $data = [];
-        $data['id'] = $this->id;
-        $data['description'] = $this->description;
-        $data['date'] = $this->date;
-        $data['amount'] = $this->amount;
-        $data['fk_user_id'] = $this->fk_user_id;
-        return $data;
+        return [
+            'id' => $this->id,
+            'description' => $this->description,
+            'date' => $this->date,
+            'amount' => $this->amount,
+            'fk_user_id' => $this->fk_user_id,
+        ];
     }
 
 }
