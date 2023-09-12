@@ -11,7 +11,8 @@
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
         "symfony/property-access": "^6.3",
-        "symfony/serializer": "^6.3"
+        "symfony/serializer": "^6.3",
+        "tymon/jwt-auth": "^2.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -33,7 +34,8 @@
         "psr-4": {
             "Tests\\": "tests/",
 
-            "SharedKernel\\Core\\": "sharedKernel/Core/src"
+            "SharedKernel\\Core\\": "sharedKernel/Core/src",
+            "SharedKernel\\Dependencies\\": "sharedKernel/Dependencies/src/"
         }
     },
     "scripts": {
