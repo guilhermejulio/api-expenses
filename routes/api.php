@@ -20,7 +20,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/expenses', [CreateExpenseController::class, 'post']);
+Route::middleware(['jwt'])
+    ->group(function () {
+        Route::prefix('/expenses')
+            ->group(function () {
+                Route::post('/', [CreateExpenseController::class, 'post']);
+            });
+    });
 
 Route::prefix('/auth')
     ->group(function () {

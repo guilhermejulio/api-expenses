@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Financial\CreateExpenseRequest;
 use App\Services\Financial\PersistExpenseService;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use SharedKernel\Core\Services\HydratorService;
 use SharedKernel\Core\Structures\HttpResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -38,7 +39,7 @@ class CreateExpenseController extends Controller
     public function prepareRequest(CreateExpenseRequest $request): ExpenseDTO
     {
         $data = $request->toArray();
-        $data['fk_user_id'] = 1;
+        $data['fk_user_id'] = Auth::user()->id;
         return $this->hydratorService->hydrateObject($data, ExpenseDTO::class);
     }
 }

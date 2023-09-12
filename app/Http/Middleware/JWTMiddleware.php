@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Exceptions\NotAuthenticatedException;
 use App\Exceptions\NotAuthorizedException;
 use Closure;
 use Exception;
@@ -24,10 +25,10 @@ class JWTMiddleware
             config(['auth.defaults.guard' => 'api']);
             $user = $this->jwtAuth->authenticateToken();
             if (!$user) {
-                throw new NotAuthorizedException();
+                throw new NotAuthenticatedException();
             }
         } catch (Exception $e) {
-            throw new NotAuthorizedException();
+            throw new NotAuthenticatedException();
         }
         return $next($request);
     }

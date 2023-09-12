@@ -17,6 +17,8 @@ class PersistExpenseRepository extends BaseRepository implements PersistExpenseI
     public function persistExpense(ExpenseDTO $expenseDTO): Expense
     {
         $data = json_decode(json_encode($expenseDTO), true);
+        unset($data['id']);
+
         /** @var Expense */
         return $this->model->create($data);
     }
