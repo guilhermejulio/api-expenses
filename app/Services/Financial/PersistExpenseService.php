@@ -3,7 +3,7 @@
 namespace App\Services\Financial;
 
 use App\Dto\Financial\ExpenseDTO;
-use App\Models\Financial\Expense;
+use App\Http\Resources\Financial\ExpenseResource;
 use App\Repositories\Contracts\Financial\PersistExpenseInterface;
 
 class PersistExpenseService
@@ -15,7 +15,7 @@ class PersistExpenseService
         $this->persistRepository = $persistRepository;
     }
 
-    public function persist(ExpenseDTO $expenseDTO): Expense
+    public function persist(ExpenseDTO $expenseDTO): ExpenseResource
     {
         return $this->persistRepository->persistExpense($expenseDTO);
     }

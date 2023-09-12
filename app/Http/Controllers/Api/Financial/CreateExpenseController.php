@@ -6,7 +6,6 @@ use App\Dto\Financial\ExpenseDTO;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Financial\CreateExpenseRequest;
 use App\Services\Financial\PersistExpenseService;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use SharedKernel\Core\Services\HydratorService;
 use SharedKernel\Core\Structures\HttpResponse;

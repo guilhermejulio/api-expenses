@@ -6,7 +6,6 @@ use JsonSerializable;
 
 class ExpenseDTO implements JsonSerializable
 {
-    private int $id;
     private string $description;
     private string $date;
     private float $amount;
@@ -14,21 +13,10 @@ class ExpenseDTO implements JsonSerializable
 
     public function __construct()
     {
-        $this->id = 0;
         $this->description = '';
         $this->date = '';
         $this->amount = 0.0;
         $this->fk_user_id = 0;
-    }
-
-    public function getId(): int
-    {
-        return $this->id;
-    }
-
-    public function setId(int $id): void
-    {
-        $this->id = $id;
     }
 
     public function getDescription(): string
@@ -74,7 +62,6 @@ class ExpenseDTO implements JsonSerializable
     public function jsonSerialize(): array
     {
         return [
-            'id' => $this->id,
             'description' => $this->description,
             'date' => $this->date,
             'amount' => $this->amount,

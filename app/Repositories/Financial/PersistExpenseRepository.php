@@ -3,6 +3,7 @@
 namespace App\Repositories\Financial;
 
 use App\Dto\Financial\ExpenseDTO;
+use App\Http\Resources\Financial\ExpenseResource;
 use App\Models\Financial\Expense;
 use App\Repositories\BaseRepository;
 use App\Repositories\Contracts\Financial\PersistExpenseInterface;
@@ -14,12 +15,10 @@ class PersistExpenseRepository extends BaseRepository implements PersistExpenseI
         parent::__construct($model);
     }
 
-    public function persistExpense(ExpenseDTO $expenseDTO): Expense
+    public function persistExpense(ExpenseDTO $expenseDTO): ExpenseResource
     {
         $data = json_decode(json_encode($expenseDTO), true);
-        unset($data['id']);
-
-        /** @var Expense */
-        return $this->model->create($data);
+        $expense = $this->model->create($data);
+        return new ExpenseResource($expense);
     }
 }

@@ -3,7 +3,6 @@
 namespace App\Http\Middleware;
 
 use App\Exceptions\NotAuthenticatedException;
-use App\Exceptions\NotAuthorizedException;
 use Closure;
 use Exception;
 use Illuminate\Http\Request;
