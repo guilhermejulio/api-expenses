@@ -7,6 +7,7 @@ namespace App\Exceptions;
 use Error;
 use Exception;
 use Illuminate\Container\Container;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\Request;
 use SharedKernel\Core\Services\SessionIdentifierService;
@@ -46,6 +47,10 @@ class Handler extends ExceptionHandler
 
     public function render($request, Throwable $e)
     {
+        if ($e instanceof ModelNotFoundException) {
+            return $this->handleException($request, new ResourceNotFoundException());
+        }
+
         if ($e instanceof Exception) {
             return $this->handleException($request, $e);
         }
@@ -53,6 +58,7 @@ class Handler extends ExceptionHandler
         if ($e instanceof Error) {
             return $this->handleException($request, $e);
         }
+
         return parent::render($request, $e);
     }
 
