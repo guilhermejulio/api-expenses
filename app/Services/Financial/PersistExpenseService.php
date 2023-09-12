@@ -15,11 +15,8 @@ class PersistExpenseService
         $this->persistRepository = $persistRepository;
     }
 
-    public function persist(ExpenseDTO $expenseDTO): void
+    public function persist(ExpenseDTO $expenseDTO): Expense
     {
-        try {
-            $this->persistRepository->persistExpense($expenseDTO);
-        } catch (\Exception $exception) {
-        }
+        return $this->persistRepository->persistExpense($expenseDTO);
     }
 }

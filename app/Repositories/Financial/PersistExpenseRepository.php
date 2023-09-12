@@ -14,15 +14,10 @@ class PersistExpenseRepository extends BaseRepository implements PersistExpenseI
         parent::__construct($model);
     }
 
-    public function persistExpense(ExpenseDTO $expenseDTO)
+    public function persistExpense(ExpenseDTO $expenseDTO): Expense
     {
-        $data = [
-            'description' => $expenseDTO->getDescription(),
-            'date' => $expenseDTO->getDate(),
-            'fk_user_id' => $expenseDTO->getUserId(),
-            'amount' => $expenseDTO->getAmount(),
-        ];
-
-        $this->model->create($data);
+        $data = json_decode(json_encode($expenseDTO), true);
+        /** @var Expense */
+        return $this->model->create($data);
     }
 }
