@@ -16,7 +16,6 @@ class HydratorService implements HydratorServiceInterface
 
     public function hydrateObject(mixed $data, string $class)
     {
-
         return $this->hydrator()->denormalize($data, $class);
     }
 

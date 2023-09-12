@@ -4,7 +4,7 @@ namespace App\Dto\Financial;
 
 use JsonSerializable;
 
-class ExpenseDTO implements JsonSerializable
+class CreateExpenseDTO implements JsonSerializable
 {
     private string $description;
     private string $date;

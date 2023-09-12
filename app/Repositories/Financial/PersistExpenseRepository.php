@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Financial;
 
-use App\Dto\Financial\ExpenseDTO;
+use App\Dto\Financial\CreateExpenseDTO;
 use App\Http\Resources\Financial\ExpenseResource;
 use App\Models\Financial\Expense;
 use App\Repositories\BaseRepository;
@@ -15,7 +15,7 @@ class PersistExpenseRepository extends BaseRepository implements PersistExpenseI
         parent::__construct($model);
     }
 
-    public function persistExpense(ExpenseDTO $expenseDTO): ExpenseResource
+    public function persistExpense(CreateExpenseDTO $expenseDTO): ExpenseResource
     {
         $data = json_decode(json_encode($expenseDTO), true);
         $expense = $this->model->create($data);

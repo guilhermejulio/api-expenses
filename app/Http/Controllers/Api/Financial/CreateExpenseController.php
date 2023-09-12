@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api\Financial;
 
-use App\Dto\Financial\ExpenseDTO;
+use App\Dto\Financial\CreateExpenseDTO;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Financial\CreateExpenseRequest;
 use App\Services\Financial\PersistExpenseService;
@@ -35,10 +35,10 @@ class CreateExpenseController extends Controller
         }
     }
 
-    public function prepareRequest(CreateExpenseRequest $request): ExpenseDTO
+    public function prepareRequest(CreateExpenseRequest $request): CreateExpenseDTO
     {
         $data = $request->toArray();
         $data['fk_user_id'] = Auth::user()->id;
-        return $this->hydratorService->hydrateObject($data, ExpenseDTO::class);
+        return $this->hydratorService->hydrateObject($data, CreateExpenseDTO::class);
     }
 }
