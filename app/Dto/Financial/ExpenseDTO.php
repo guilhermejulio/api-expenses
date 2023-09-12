@@ -2,14 +2,22 @@
 
 namespace App\Dto\Financial;
 
-use Carbon\Carbon;
-
 class ExpenseDTO
 {
     private int $id;
     private string $description;
-    private Carbon $date;
+    private string $date;
     private float $amount;
+    private int $fk_user_id;
+
+    public function __construct()
+    {
+        $this->id = 0;
+        $this->description = '';
+        $this->date = '';
+        $this->amount = 0.0;
+        $this->fk_user_id = 0;
+    }
 
     public function getId(): int
     {
@@ -31,12 +39,12 @@ class ExpenseDTO
         $this->description = $description;
     }
 
-    public function getDate(): Carbon
+    public function getDate(): string
     {
         return $this->date;
     }
 
-    public function setDate(Carbon $date): void
+    public function setDate(string $date): void
     {
         $this->date = $date;
     }
@@ -53,21 +61,23 @@ class ExpenseDTO
 
     public function getUserId(): int
     {
-        return $this->userId;
+        return $this->fk_user_id;
     }
 
-    public function setUserId(int $userId): void
+    public function setFkUserId(int $userId): void
     {
-        $this->userId = $userId;
+        $this->fk_user_id = $userId;
     }
-    private int $userId;
 
-    public function __construct()
+    public function jsonSerialize()
     {
-        $this->id = 0;
-        $this->description = '';
-        $this->date = Carbon::now();
-        $this->amount = 0.0;
-        $this->userId = 0;
+        $data = [];
+        $data['id'] = $this->id;
+        $data['description'] = $this->description;
+        $data['date'] = $this->date;
+        $data['amount'] = $this->amount;
+        $data['fk_user_id'] = $this->fk_user_id;
+        return $data;
     }
+
 }
