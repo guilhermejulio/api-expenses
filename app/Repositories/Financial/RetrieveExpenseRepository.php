@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Financial;
 
+use App\Http\Resources\Financial\UserExpensesResource;
 use App\Models\Financial\Expense;
 use App\Repositories\BaseRepository;
 use App\Repositories\Contracts\Financial\RetrieveExpenseInterface;
@@ -13,23 +14,12 @@ class RetrieveExpenseRepository extends BaseRepository implements RetrieveExpens
         parent::__construct($model);
     }
 
-    public function exists(int $expenseId): bool
+    public function retrieveExpensesFromUser(int $userId): UserExpensesResource
     {
-        return $this->model->where('id', $expenseId)->exists();
-    }
-
-    public function getExpenseById(int $expenseId): Expense|null
-    {
-        return $this->model->find($expenseId);
-    }
-
-    public function getExpenses(int $userId)
-    {
-        // TODO: Implement getExpenses() method.
-    }
-
-    public function getExpensesPaginated(int $userId, int $page, int $perPage)
-    {
-        // TODO: Implement getExpensesPaginated() method.
+        $expenses = $this->model
+            ->where('fk_user_id', $userId)
+            ->where('is_deleted', false)
+            ->get();
+        return new UserExpensesResource($expenses);
     }
 }
