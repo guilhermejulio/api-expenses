@@ -23,6 +23,8 @@ return new class extends Migration
             $table->date('date');
             $table->unsignedBigInteger('fk_user_id');
             $table->decimal('amount', 10, 2);
+            $table->boolean('is_deleted')->default(false);
+            $table->dateTime('deleted_at')->nullable();
             $table->timestamps();
 
             $table->foreign('fk_user_id', 'fk_user_id_foreign')
