@@ -15,6 +15,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property Carbon $date
  * @property int $fk_user_id
  * @property float $amount
+ * @property bool $is_deleted
+ * @property Carbon $deleted_at
  * @property Carbon $created_at
  * @property Carbon $updated_at
  *
@@ -29,12 +31,17 @@ class Expense extends BaseModel
         'date',
         'fk_user_id',
         'amount',
+        'is_deleted',
+        'deleted_at',
         'created_at',
         'updated_at',
     ];
 
     protected $dates = [
         'date',
+        'deleted_at',
+        'created_at',
+        'updated_at',
     ];
 
     public function user(): BelongsTo
