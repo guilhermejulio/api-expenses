@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\Financial\CreateExpenseController;
 use App\Http\Controllers\Api\Financial\DeleteExpenseController;
 use App\Http\Controllers\Api\Financial\EditExpenseController;
+use App\Http\Controllers\Api\Financial\RetrieveExpenseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +30,7 @@ Route::middleware(['jwt'])
                 Route::post('/', [CreateExpenseController::class, 'post']);
                 Route::put('/{expense}', [EditExpenseController::class, 'update']);
                 Route::delete('/{expense}', [DeleteExpenseController::class, 'delete']);
+                Route::get('/', [RetrieveExpenseController::class, 'get']);
             });
     });
 
