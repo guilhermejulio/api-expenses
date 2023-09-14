@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\Financial\DeleteExpenseController;
 use App\Http\Controllers\Api\Financial\EditExpenseController;
 use App\Http\Controllers\Api\Financial\RetrieveExpenseController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,13 +19,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::middleware(['jwt'])
     ->group(function () {
+        Route::get('/auth/user', function () {
+            return Auth::user();
+        });
         Route::prefix('/expenses')
             ->group(function () {
                 Route::post('/', [CreateExpenseController::class, 'post']);
@@ -37,4 +36,6 @@ Route::middleware(['jwt'])
 Route::prefix('/auth')
     ->group(function () {
         Route::post('login', [AuthController::class, 'login']);
+        Route::post('register', [AuthController::class, 'register']);
+        Route::post('logout', [AuthController::class, 'logout']);
     });

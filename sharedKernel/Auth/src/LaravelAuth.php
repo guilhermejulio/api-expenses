@@ -21,4 +21,9 @@ class LaravelAuth
     {
         return 3600;
     }
+
+    public function logout($guard = 'api'): void
+    {
+        Auth::guard($guard)->logout();
+    }
 }
