@@ -19,7 +19,7 @@ class LaravelAuth
 
     public function getTokenExpires()
     {
-        return 3600;
+        return Auth::guard('api')->factory()->getTTL() * 1440;
     }
 
     public function logout($guard = 'api'): void
