@@ -4,11 +4,13 @@ namespace App\Providers;
 
 use App\Repositories\Contracts\Financial\DeleteExpenseInterface;
 use App\Repositories\Contracts\Financial\EditExpenseInterface;
+use App\Repositories\Contracts\Financial\GetStatisticsInterface;
 use App\Repositories\Contracts\Financial\PersistExpenseInterface;
 use App\Repositories\Contracts\Financial\RetrieveExpenseInterface;
 use App\Repositories\Contracts\User\CreateUserInterface;
 use App\Repositories\Financial\DeleteExpenseRepository;
 use App\Repositories\Financial\EditExpenseRepository;
+use App\Repositories\Financial\GetStatisticsRepository;
 use App\Repositories\Financial\PersistExpenseRepository;
 use App\Repositories\Financial\RetrieveExpenseRepository;
 use App\Repositories\User\CreateUserRepository;
@@ -26,6 +28,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(RetrieveExpenseInterface::class, RetrieveExpenseRepository::class);
         $this->app->bind(DeleteExpenseInterface::class, DeleteExpenseRepository::class);
         $this->app->bind(CreateUserInterface::class, CreateUserRepository::class);
+        $this->app->bind(GetStatisticsInterface::class, GetStatisticsRepository::class);
     }
 
     /**
