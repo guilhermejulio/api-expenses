@@ -12,7 +12,7 @@ class StatisticsResource extends JsonResource
     {
         /** @var GetStatisticsDTO $this */
         return [
-            'total' => number_format($this->getTotal(), 2),
+            'total' => number_format($this->getTotal(), 2, ',', '.'),
             'expensesCount' => $this->getExpensesCount(),
         ];
     }

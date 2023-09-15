@@ -8,6 +8,11 @@ use App\Models\User;
 
 class ExpensePolicy
 {
+    public function get(User $user, Expense $expense): bool
+    {
+        return $this->isOwner($user, $expense);
+    }
+
     public function update(User $user, Expense $expense): bool
     {
         return $this->isOwner($user, $expense);

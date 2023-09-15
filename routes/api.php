@@ -27,11 +27,12 @@ Route::middleware(['jwt'])
         });
         Route::prefix('/expenses')
             ->group(function () {
+                Route::get('/stats', [GetStatisticsController::class, 'statistics']);
                 Route::post('/', [CreateExpenseController::class, 'post']);
                 Route::put('/{expense}', [EditExpenseController::class, 'update']);
                 Route::delete('/{expense}', [DeleteExpenseController::class, 'delete']);
-                Route::get('/', [RetrieveExpenseController::class, 'get']);
-                Route::get('/statistics', [GetStatisticsController::class, 'get']);
+                Route::get('/', [RetrieveExpenseController::class, 'list']);
+                Route::get('/{expense}', [RetrieveExpenseController::class, 'get']);
             });
     });
 

@@ -17,11 +17,11 @@ class ExpenseResource extends JsonResource
         return [
             'id' => $this->id,
             'description' => $this->description,
-            'date' => Carbon::parse($this->date)->format('Y-m-d'),
+            'date' => Carbon::parse($this->date)->format('d/m/Y'),
             'fk_user_id' => $this->fk_user_id,
             'amount' => $this->amount,
-            'created_at' => $this->created_at->toDateTimeString(),
-            'updated_at' => $this->updated_at->toDateTimeString(),
+            'created_at' => Carbon::parse($this->created_at)->format('d/m/Y H:i'),
+            'updated_at' => Carbon::parse($this->updated_at)->format('d/m/Y H:i'),
         ];
     }
 }

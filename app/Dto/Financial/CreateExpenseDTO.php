@@ -8,7 +8,7 @@ class CreateExpenseDTO implements JsonSerializable
 {
     private string $description;
     private string $date;
-    private float $amount;
+    private string $amount;
     private int $fk_user_id;
 
     public function __construct()
@@ -39,12 +39,12 @@ class CreateExpenseDTO implements JsonSerializable
         $this->date = $date;
     }
 
-    public function getAmount(): float
+    public function getAmount(): string
     {
         return $this->amount;
     }
 
-    public function setAmount(float $amount): void
+    public function setAmount(string $amount): void
     {
         $this->amount = $amount;
     }

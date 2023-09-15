@@ -16,7 +16,7 @@ class GetStatisticsController extends Controller
         $this->getStatisticsService = $getStatisticsService;
     }
 
-    public function get()
+    public function statistics()
     {
         $response = $this->getStatisticsService->get();
         return new HttpResponse($response, Response::HTTP_OK, [], 'statistics');

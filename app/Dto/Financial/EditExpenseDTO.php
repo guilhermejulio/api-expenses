@@ -8,7 +8,7 @@ class EditExpenseDTO implements JsonSerializable
 {
     private ?string $description = null;
     private ?string $date = null;
-    private ?float $amount = null;
+    private ?string $amount = null;
 
     public function getDescription(): ?string
     {
@@ -30,12 +30,12 @@ class EditExpenseDTO implements JsonSerializable
         $this->date = $date;
     }
 
-    public function getAmount(): ?float
+    public function getAmount(): ?string
     {
         return $this->amount;
     }
 
-    public function setAmount(?float $amount): void
+    public function setAmount(?string $amount): void
     {
         $this->amount = $amount;
     }
