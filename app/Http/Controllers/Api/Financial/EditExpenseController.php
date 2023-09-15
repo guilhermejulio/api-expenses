@@ -29,7 +29,7 @@ class EditExpenseController extends Controller
         $this->authorize('update', $expense);
         $serviceRequest = $this->prepareRequest($request);
         $response = $this->editExpenseService->edit($expense->id, $serviceRequest);
-        return new HttpResponse($response, Response::HTTP_CREATED, [], 'expense');
+        return new HttpResponse($response, Response::HTTP_OK, [], 'expense');
     }
 
     private function prepareRequest(EditExpenseRequest $request)
