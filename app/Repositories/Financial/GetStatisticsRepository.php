@@ -17,7 +17,10 @@ class GetStatisticsRepository extends BaseRepository implements GetStatisticsInt
 
     public function getStatistics(int $userId): StatisticsResource
     {
-        $expenses = $this->model->where('fk_user_id', $userId)->get();
+        $expenses = $this->model
+            ->where('fk_user_id', $userId)
+            ->where('is_deleted', false)
+            ->get();
         $statistics = new GetStatisticsDTO($expenses->sum('amount'), $expenses->count());
         return new StatisticsResource($statistics);
     }
