@@ -9,7 +9,7 @@ Trata-se de uma API PHP Laravel que serve ao frontend um CRUD de controle de des
 ## Postman
 
 <br/>
-Baixe aqui a collection do postman: https://drive.google.com/file/d/1ulu9g5DhG0H0jcFOhRqi6uf7EKe2_smk/view?usp=sharing
+Baixe aqui a collection do postman no final da documentação: https://guilhermejulio.notion.site/Documenta-o-Operacional-Sistema-de-Despesas-5825f7d380b74dfd904d8d755387c47e?pvs=4
 
 Rotas: 
 - GET /api/auth/user
